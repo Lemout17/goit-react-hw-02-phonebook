@@ -8,8 +8,8 @@ export default class Form extends Component {
   };
 
   handleChange = (e) => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
+    // const { name, value } = e.target;
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   handleSubmit = (e) => {
@@ -26,6 +26,7 @@ export default class Form extends Component {
   };
 
   render() {
+    const { name, number } = this.state;
     return (
       <form className={s.form} onSubmit={this.handleSubmit}>
         <label className={s.label}>
@@ -34,7 +35,7 @@ export default class Form extends Component {
             className={s.input}
             type="text"
             name="name"
-            value={this.state.name}
+            value={name}
             onChange={this.handleChange}
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
@@ -47,7 +48,7 @@ export default class Form extends Component {
             className={s.input}
             type="tel"
             name="number"
-            value={this.state.number}
+            value={number}
             onChange={this.handleChange}
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"

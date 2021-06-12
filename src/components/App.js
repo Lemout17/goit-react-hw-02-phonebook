@@ -5,7 +5,7 @@ import s from "./App.module.css";
 import Section from "./Section";
 import Form from "./Form";
 import Contacts from "./Contacts";
-import ContactsFilter from "./Contacts/ContacsFilter";
+import ContactsFilter from "./Contacts/ContactsFilter";
 
 export default class App extends Component {
   state = {
@@ -35,14 +35,17 @@ export default class App extends Component {
   };
 
   addContact = ({ name, number }) => {
+    const { contacts } = this.state;
     console.log(name, number);
     const contact = {
       id: uuidv4(),
       name,
       number,
     };
-    this.state.contacts.some((contact) => contact.name === name)
+    contacts.find((contact) => contact.name === name)
       ? alert(`${name} is already in contacts`)
+      : contacts.find((contact) => contact.number === number)
+      ? alert(`${number} is already in contacts`)
       : this.setState(({ contacts }) => ({
           contacts: [contact, ...contacts],
         }));
@@ -62,9 +65,11 @@ export default class App extends Component {
   filterContacts = () => {
     const { contacts, filter } = this.state;
     const normalizedFilter = filter.toLowerCase();
-    return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(normalizedFilter)
-    );
+    return contacts
+      .filter((contact) =>
+        contact.name.toLowerCase().includes(normalizedFilter)
+      )
+      .sort((a, b) => a.name.localeCompare(b.name));
   };
 
   render() {
