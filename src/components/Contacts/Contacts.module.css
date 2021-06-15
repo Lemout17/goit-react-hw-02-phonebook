@@ -1,8 +1,7 @@
 .list {
   margin-top: 20px;
 }
-.item {
-}
+
 .text {
   display: inline-block;
   width: 120px;
@@ -18,7 +17,7 @@
 }
 
 .button {
-  width: 110px;
+  width: 130px;
   margin-top: 10px;
   padding: 5px;
   margin-left: 2%;
@@ -27,7 +26,8 @@
 
   border: 1px solid grey;
   border-radius: 15px;
-
+  background-color: transparent;
+  backdrop-filter: blur(2px);
   cursor: pointer;
 
   transition: box-shadow 250ms linear;
@@ -35,5 +35,6 @@
 
 .button:hover,
 .button:focus {
-  background-color: #2196f3;
+  background-color: rgb(71, 88, 180);
+  color: #fff;
 }

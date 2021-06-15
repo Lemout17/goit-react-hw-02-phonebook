@@ -11,6 +11,7 @@
   font-size: 15px;
 
   border: 1px solid grey;
+  border-radius: 4px;
 
   background: #fff9f961;
   backdrop-filter: blur(20px);
